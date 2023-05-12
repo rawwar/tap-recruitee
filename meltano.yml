@@ -16,14 +16,13 @@ plugins:
     - about
     - stream-maps
     config:
-      start_date: '2010-01-01T00:00:00Z'
+      company_id: 123
+      auth_token: "123"
     settings:
-    # TODO: To configure using Meltano, declare settings and their types here:
-    - name: username
-    - name: password
+    - name: auth_token
       kind: password
-    - name: start_date
-      value: '2010-01-01T00:00:00Z'
+    - name: project_id
+      value: '123'
   loaders:
   - name: target-jsonl
     variant: andyh1203
