@@ -3,13 +3,14 @@
 from __future__ import annotations
 
 from tap_recruitee import schemas
-from tap_recruitee.client import recruiteeStream
+from tap_recruitee.client import RecruiteeStream
 
 
-class CandidateStream(recruiteeStream):
+class CandidateStream(RecruiteeStream):
     """Define custom stream."""
 
     name = "candidates"
     path = "/candidates"
     primary_keys = ["id"]
     schema = schemas.candidates
+    records_jsonpath = "$.candidates[*]"

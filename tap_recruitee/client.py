@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Any, Callable, Iterable
 
 import requests
-from singer_sdk.authenticators import APIKeyAuthenticator
+from singer_sdk.authenticators import BearerTokenAuthenticator
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseAPIPaginator  # noqa: TCH002
 from singer_sdk.streams import RESTStream
@@ -15,7 +15,7 @@ _Auth = Callable[[requests.PreparedRequest], requests.PreparedRequest]
 SCHEMAS_DIR = Path(__file__).parent / Path("./schemas")
 
 
-class recruiteeStream(RESTStream):
+class RecruiteeStream(RESTStream):
     """recruitee stream class."""
 
     @property
@@ -30,17 +30,15 @@ class recruiteeStream(RESTStream):
     next_page_token_jsonpath = "$.next_page"  # noqa: S105
 
     @property
-    def authenticator(self) -> APIKeyAuthenticator:
+    def authenticator(self) -> BearerTokenAuthenticator:
         """Return a new authenticator object.
 
         Returns:
             An authenticator instance.
         """
-        return APIKeyAuthenticator.create_for_stream(
+        return BearerTokenAuthenticator.create_for_stream(
             self,
-            key="x-api-key",
-            value=self.config.get("auth_token", ""),
-            location="header",
+            token=self.config.get("auth_token"),
         )
 
     @property

@@ -36,7 +36,7 @@ class Taprecruitee(Tap):
         ),
     ).to_dict()
 
-    def discover_streams(self) -> list[streams.recruiteeStream]:
+    def discover_streams(self) -> list[streams.RecruiteeStream]:
         """Return a list of discovered streams.
 
         Returns:
