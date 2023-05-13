@@ -21,7 +21,7 @@ plugins:
     settings:
     - name: auth_token
       kind: password
-    - name: project_id
+    - name: company_id
       value: '123'
   loaders:
   - name: target-jsonl
