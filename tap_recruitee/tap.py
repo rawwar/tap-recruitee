@@ -3,9 +3,8 @@
 from __future__ import annotations
 
 from singer_sdk import Tap
-from singer_sdk import typing as th  # JSON schema typing helpers
+from singer_sdk import typing as th
 
-# TODO: Import your custom stream types here:
 from tap_recruitee import streams
 
 
@@ -27,7 +26,14 @@ class Taprecruitee(Tap):
             th.IntegerType,
             required=True,
             description="Company id",
-        )
+        ),
+        th.Property(
+            "incremental",
+            th.BooleanType,
+            required=False,
+            description="Whether extraction should be incremental or full load",
+            default=False,
+        ),
     ).to_dict()
 
     def discover_streams(self) -> list[streams.recruiteeStream]:
@@ -37,8 +43,7 @@ class Taprecruitee(Tap):
             A list of discovered streams.
         """
         return [
-            streams.GroupsStream(self),
-            streams.UsersStream(self),
+            streams.CandidateStream(self),
         ]
 
 

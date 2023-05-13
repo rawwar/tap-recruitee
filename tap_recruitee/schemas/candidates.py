@@ -1,0 +1,76 @@
+"""Schema for candidates stream."""
+from singer_sdk import typing as th
+
+schema = th.PropertiesList(
+    th.Property("admin_id", th.IntegerType),
+    th.Property("adminapp_url", th.StringType),
+    th.Property("created_at", th.DateTimeType),
+    th.Property("emails", th.ArrayType(th.StringType)),
+    th.Property("example", th.BooleanType),
+    th.Property("followed", th.BooleanType),
+    th.Property("has_avatar", th.BooleanType),
+    th.Property("id", th.IntegerType),
+    th.Property("initials", th.StringType),
+    th.Property("last_message_at", th.DateTimeType),
+    th.Property("my_last_rating", th.StringType),
+    th.Property("my_pending_result_request", th.BooleanType),
+    th.Property("my_upcoming_event", th.BooleanType),
+    th.Property("name", th.StringType),
+    th.Property("pending_result_request", th.BooleanType),
+    th.Property("phones", th.ArrayType(th.StringType)),
+    th.Property("photo_thumb_url", th.StringType),
+    th.Property(
+        "placements",
+        th.ArrayType(
+            th.ObjectType(
+                th.Property("candidate_id", th.IntegerType),
+                th.Property("created_at", th.DateTimeType),
+                th.Property("department_id", th.IntegerType),
+                th.Property("department_name", th.StringType),
+                th.Property("hired_at", th.DateTimeType),
+                th.Property("hired_by_id", th.IntegerType),
+                th.Property("hired_in_other_placement", th.BooleanType),
+                th.Property("hired_in_this_placement", th.BooleanType),
+                th.Property("id", th.IntegerType),
+                th.Property("job_starts_at", th.DateTimeType),
+                th.Property("language", th.StringType),
+                th.Property("offer_id", th.IntegerType),
+                th.Property("overdue_at", th.DateTimeType),
+                th.Property("overdue_diff", th.StringType),
+                th.Property("position", th.IntegerType),
+                th.Property("positive_ratings", th.StringType),
+                th.Property(
+                    "ratings",
+                    th.ObjectType(
+                        th.Property("neutral", th.IntegerType),
+                        th.Property("no", th.IntegerType),
+                        th.Property("strong_yes", th.IntegerType),
+                        th.Property("yes", th.IntegerType),
+                    ),
+                ),
+                th.Property("stage_id", th.IntegerType),
+                th.Property("updated_at", th.DateTimeType),
+            ),
+        ),
+    ),
+    th.Property("positive_ratings", th.IntegerType),
+    th.Property(
+        "ratings",
+        th.ObjectType(
+            th.Property("neutral", th.IntegerType),
+            th.Property("no", th.IntegerType),
+            th.Property("strong_yes", th.IntegerType),
+            th.Property("yes", th.IntegerType),
+        ),
+    ),
+    th.Property("ratings_count", th.IntegerType),
+    th.Property("referrer", th.StringType),
+    th.Property("source", th.StringType),
+    th.Property("tasks_count", th.IntegerType),
+    th.Property("unread_notifications", th.BooleanType),
+    th.Property("upcoming_event", th.BooleanType),
+    th.Property("updated_at", th.DateTimeType),
+    th.Property("viewed", th.BooleanType),
+)
+
+schema_dict = schema.to_dict()
