@@ -21,8 +21,9 @@ class RecruiteeStream(RESTStream):
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
+        api_url = self.config.get("api_url")
         company_id = self.config.get("company_id")
-        return f"https://api.recruitee.com/c/{company_id}"
+        return f"{api_url}/c/{company_id}"
 
     records_jsonpath = "$[*]"  # Or override `parse_response`.
 

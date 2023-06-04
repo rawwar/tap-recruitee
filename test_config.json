@@ -1,4 +1,5 @@
 {
-    "auth_token":"",
-    "company_id": 0
+    "auth_token": "",
+    "company_id": 0,
+    "api_url": "https://api.recruitee.com"
 }

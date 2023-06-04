@@ -28,11 +28,11 @@ class Taprecruitee(Tap):
             description="Company id",
         ),
         th.Property(
-            "incremental",
-            th.BooleanType,
+            "api_url",
+            th.StringType,
             required=False,
-            description="Whether extraction should be incremental or full load",
-            default=False,
+            description="API URL for tap recruitee",
+            default="https://api.recruitee.com",
         ),
     ).to_dict()
 
