@@ -44,6 +44,8 @@ class Taprecruitee(Tap):
         """
         return [
             streams.CandidateStream(self),
+            streams.OfferStream(self),
+            streams.DepartmentsStream(self),
         ]
 
 
